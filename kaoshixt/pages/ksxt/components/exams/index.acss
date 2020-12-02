@@ -1,0 +1,34 @@
+*{
+  font-size: 34rpx;
+}
+.main{
+  width: 100%;
+  height: calc(100% - 220rpx);
+  overflow-y: auto;
+}
+.btns{
+  width: 100%;
+  height: 2.2rem;
+}
+.v_que{
+  font-weight: bolder;
+}
+.v_ans{
+  width: 100%;
+}
+.v_ans label{
+  display: block;
+  width: 95%;
+}
+.input{
+  margin-left: 5%;
+  width: 90%;
+  height: .7rem;
+  margin-top: .1rem;
+}
+.text{
+  margin-left: 5%;
+  margin-top: 1%;
+  width: 90%;
+  height: 5rem;
+}

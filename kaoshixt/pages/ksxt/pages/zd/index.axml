@@ -1,0 +1,1 @@
+<exams questions="{{ questions }}" onOwerData="setOwerData"></exam>

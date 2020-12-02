@@ -1,0 +1,451 @@
+<view class="page">
+  <view class="page-title">医疗锐器伤呈报表</view>
+  <form onSubmit="formSubmit" onReset="formReset" style="height: {{ height}}px;">
+    <scroll-view scroll-y="true" class="page-section v_scroll">
+      <view class="form-row">
+        <view class="form-row-label label">1.姓名</view>
+        <view class="form-row-content">
+          <input type="text" class="input" name="xingming"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">2.性别</view>
+        <view class="form-row-content">
+          <radio-group name="xingbie">
+            <label style="margin-right: .2rem;">
+              <radio value="1" checked="true"/>男
+            </label>
+            <label style="margin-left: .2rem;">
+              <radio value="2" />女
+            </label>
+          </radio-group>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">3.年龄</view>
+        <view class="form-row-content">
+          <input type="number" class="input" name="nianling" />
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">4.职称</view>
+        <view class="form-row-content">
+          <input type="text" class="input" name="zhicheng" />
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">5.科室</view>
+        <view class="form-row-content">
+          <input type="text" class="input" name="keshi" />
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">6.开始工作时间</view>
+        <view class="form-row-content">
+          <input type="text" name="kaishigzsj" onFocus="dateFocus" value="{{ gzsj }}"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">7.本人联系电话</view>
+        <view class="form-row-content">
+          <input type="text" class="input" name="lianxidh" />
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">8.受伤时间</view>
+        <view class="form-row-content">
+          <input type="text" name="shoushangsj" onFocus="dateFocus2" value="{{ sssj }}"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">9.是否接种乙肝疫苗</view>
+        <view class="form-row-content">
+          <radio-group name="xingbie">
+            <label style="margin-right: .2rem;">
+              <radio value="1" />是
+            </label>
+            <label style="margin-left: .2rem;">
+              <radio value="2" />否
+            </label>
+          </radio-group>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">注射时间</view>
+        <view class="form-row-content">
+          <picker onChange="bindPickerChange" name="zhushesjid" data-id="zs" value="{{ zsind }}" range="{{ zhushe }}">
+            <view>
+              <input type="text" name="zhushesj" value="{{ zhushe[zsind] }}" disabled="true"/>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">10.工作类别</view>
+        <view class="form-row-content">
+          <picker onChange="bindPickerChange" name="gongzuolxid" data-id="gz" value="{{ gzind }}" range="{{ gongzuolx }}">
+            <view>
+              <input type="text" name="gongzuolx" value="{{ gongzuolx[gzind] }}" disabled="true"/>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">其他</view>
+        <view class="form-row-content">
+          <input class="{{ gzind == 16?'': 'bg-gray' }} input" name="qitagz" disabled="{{ blind == 16?false:true }}"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">11.伤害发生地</view>
+        <view class="form-row-content">
+          <picker onChange="bindPickerChange" name="fashengdid" data-id="fs" value="{{ fsind }}" range="{{ fashengdd }}">
+            <view>
+              <input type="text" name="fashengdd" value="{{ fashengdd[fsind] }}" disabled="true"/>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">其他</view>
+        <view class="form-row-content">
+          <input class="{{ fsind == 19?'': 'bg-gray' }} input" name="qitadd" disabled="{{ blind == 19?false:true }}"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">12.导致伤害锐器种类</view>
+        <view class="form-row-content">
+          <picker onChange="bindPickerChange" name="ruiqizlid" data-id="rq" value="{{ rqind }}" range="{{ ruiqi }}">
+            <view>
+              <input type="text" name="ruiqizl" value="{{ ruiqi[rqind] }}" disabled="true"/>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">其他</view>
+        <view class="form-row-content">
+          <input class="{{ rqind == 15?'': 'bg-gray' }} input" name="qitarqlx" disabled="{{ rqind == 15?false:true }}"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">13.伤害制造者</view>
+        <view class="form-row-content">
+          <picker onChange="bindPickerChange" name="zhizaozid" data-id="zz" value="{{ zzind }}" range="{{ zhizao }}">
+            <view>
+              <input type="text" name="zhizaoz" value="{{ zhizao[zzind] }}" disabled="true"/>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">14.受伤者为最初使用者</view>
+        <view class="form-row-content">
+          <radio-group name="zuichusyz">
+            <label style="margin-left: .2rem;">
+              <radio value="1" />是
+            </label>
+            <label style="margin-left: .2rem;">
+              <radio value="2" />不是
+            </label>
+          </radio-group>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">15.锐器使用目的</view>
+        <view class="form-row-content">
+          <picker onChange="bindPickerChange" name="ruiqisyid" data-id="rqmd" value="{{ rqmdind }}" range="{{ ruiqimd }}">
+            <view>
+              <input type="text" name="ruiqisymd" value="{{ ruiqimd[rqmdind] }}" disabled="true"/>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">其他</view>
+        <view class="form-row-content">
+          <input class="{{ rqmdind == 16?'': 'bg-gray' }} input" name="qitamd" disabled="{{ rqmdind == 16?false:true }}"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">16.有无不正确操作</view>
+        <view class="form-row-content">
+          <picker onChange="bindPickerChange" name="caozuocwid" data-id="czcw" value="{{ czcwind }}" range="{{ caozuo }}">
+            <view>
+              <input type="text" name="caozuocw" value="{{ caozuo[czcwind] }}" disabled="true"/>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">17.被血污染锐器刺伤</view>
+        <view class="form-row-content">
+          <picker onChange="bindPickerChange" name="xuewucsid" data-id="xwcs" value="{{ xwcsind }}" range="{{ xuewu }}">
+            <view>
+              <input type="text" name="xuewucs" value="{{ xuewu[xwcsind] }}" disabled="true"/>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">18.受伤前是否知道病人有无经血液传播的疾病</view>
+        <view class="form-row-content">
+          <radio-group name="bingrencb">
+            <label style="margin-left: .2rem;">
+              <radio value="1" />知道
+            </label>
+            <label style="margin-left: .2rem;">
+              <radio value="2" />不知道
+            </label>
+          </radio-group>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row row">
+        <view class="form-row-label label">19.如果受伤与病人有关，病人有无乙肝，丙肝，梅毒，艾滋病</view>
+        <view class="form-row-content">
+          <checkbox-group onChange="onChange" name="chuanranbmc">
+            <label class="checkbox">
+              <checkbox class="v-check" value="1" />
+              <text class="checkbox-text">艾滋病</text>
+            </label>
+            <label class="checkbox">
+              <checkbox class="v-check" value="2" />
+              <text class="checkbox-text">乙肝</text>
+            </label>
+            <label class="checkbox">
+              <checkbox class="v-check" value="3" />
+              <text class="checkbox-text">丙肝</text>
+            </label>
+            <label class="checkbox">
+              <checkbox class="v-check" value="4" />
+              <text class="checkbox-text">梅毒</text>
+            </label>
+          </checkbox-group>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">20.伤害发生的操作环节</view>
+        <view class="form-row-content">
+          <picker onChange="bindPickerChange" name="shanhaifsid" data-id="fshj" value="{{ fshjind }}" range="{{ fashenghj }}">
+            <view>
+              <input type="text" name="shanhaifshj" value="{{ fashenghj[fshjind] }}" disabled="true"/>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">21.是否经过规范化培训</view>
+        <view class="form-row-content">
+          <radio-group name="guifangpx">
+            <label style="margin-left: .2rem;">
+              <radio value="1" />是
+            </label>
+            <label style="margin-left: .2rem;">
+              <radio value="2" />否
+            </label>
+          </radio-group>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">22.受伤后，伤口如何处理</view>
+        <view class="form-row-content">
+          <picker onChange="bindPickerChange" name="shankouid" data-id="sk" value="{{ skind }}" range="{{ shankou }}">
+            <view>
+              <input type="text" name="shankoucl" value="{{ shankou[skind] }}" disabled="true"/>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">23.如果受伤部位时，锐器穿透了</view>
+        <view class="form-row-content">
+          <picker onChange="bindPickerChange" name="chuantouid" data-id="ct" value="{{ ctind }}" range="{{ chuantou }}">
+            <view>
+              <input type="text" name="chuantou" value="{{ chuantou[ctind] }}" disabled="true"/>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">24.受伤程度</view>
+        <view class="form-row-content">
+          <picker onChange="bindPickerChange" name="shoushancdid" data-id="fshj" value="{{ ssind }}" range="{{ shoushan }}">
+            <view>
+              <input type="text" name="shoushancd" value="{{ shoushan[ssind] }}" disabled="true"/>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">25.锐器使用者时习惯</view>
+        <view class="form-row-content">
+          <radio-group name="shiyongxg">
+            <label style="margin-left: .2rem;">
+              <radio value="1" />左手操作
+            </label>
+            <label style="margin-left: .2rem;">
+              <radio value="2" />右手操作
+            </label>
+          </radio-group>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">26.检查费</view>
+        <view class="form-row-content">
+          <input type="digit" name="jianchaf" class="input"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">27.预防用药</view>
+        <view class="form-row-content">
+          <input type="text" name="yifangyy" class="input"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">28.用药费用</view>
+        <view class="form-row-content">
+          <input type="digit" name="yongyaofy" class="input"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">29.工龄</view>
+        <view class="form-row-content">
+          <input type="number" class="input w30" name="nian" />年
+          <input type="number" class="input w30" name="yue" />月
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">30.病人姓名</view>
+        <view class="form-row-content">
+          <input type="text" class="input" name="bingrenxm"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">31.病人性别</view>
+        <view class="form-row-content">
+          <radio-group name="bingrenxb">
+            <label style="margin-right: .2rem;">
+              <radio value="1" checked="true"/>男
+            </label>
+            <label style="margin-left: .2rem;">
+              <radio value="2" />女
+            </label>
+          </radio-group>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">32.病人年龄</view>
+        <view class="form-row-content">
+          <input type="number" class="input" name="bingrennl"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">33.病人床位号</view>
+        <view class="form-row-content">
+          <input type="text" class="input" name="bingrencwh"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">34.病人住院号</view>
+        <view class="form-row-content">
+          <input type="text" class="input" name="bingrenzyh"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">35.病人所在科室</view>
+        <view class="form-row-content">
+          <input type="text" class="input" name="bingrenks"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">36.病人联系电话</view>
+        <view class="form-row-content">
+          <input type="text" class="input" name="bingrenlxdh"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">37.锐器伤是否来源不明</view>
+        <view class="form-row-content">
+          <radio-group name="bingrenxb">
+            <label style="margin-right: .2rem;">
+              <radio value="1"/>是
+            </label>
+            <label style="margin-left: .2rem;">
+              <radio value="2" />否
+            </label>
+          </radio-group>
+        </view>
+      </view>    
+      <view class="form-line" />
+      <view class="form-row row">
+        <view class="form-row-label label">38.请注明伤害发生的位置号码</view>
+        <view class="form-row-content">
+          <textarea name="shanhaibwhm" class="v-text"></textarea>
+        </view>
+      </view>
+      <view class="form-row" style="height: 5rem;padding-left: 0.6rem;">
+        <image mode="scaleToFill" src="image/rqswz.png"/>
+      </view>
+      <view class="form-line" />
+      <view class="form-row row">
+        <view class="form-row-label label">39.请描述伤害发生的过程</view>
+        <view class="form-row-content">
+          <textarea name="fashenggc" class="v-text"></textarea>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row row">
+        <view class="form-row-label label">40.科室核实意见</view>
+        <view class="form-row-content">
+          <textarea name="kehsiyj" class="v-text"></textarea>
+        </view>
+      </view>
+    </scroll-view>
+
+    <view class="page-section-btns">
+      <view><button class="btn-st" size="default" type="primary" form-type="submit">提交</button></view>
+      <view><button class="btn-st" size="default" type="ghost" form-type="reset">重置</button></view>
+    </view>
+  </form>
+</view>

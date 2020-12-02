@@ -1,0 +1,6 @@
+{
+  "defaultTitle": "N2护士三基考试",
+  "usingComponents": {
+    "exam": "../../../components/exams/index"
+  }
+}

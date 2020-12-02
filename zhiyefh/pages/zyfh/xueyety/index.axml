@@ -1,0 +1,299 @@
+<view class="page">
+  <view class="page-title">血液体液暴露登记表</view>
+  <form onSubmit="formSubmit" onReset="formReset" style="height: {{ height }}px;">
+    <scroll-view scroll-y="true" class="page-section v_scroll">
+      <view class="form-row">
+        <view class="form-row-label label">1.姓名</view>
+        <view class="form-row-content">
+          <input type="text" class="input" name="xingming"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">2.性别</view>
+        <view class="form-row-content">
+          <radio-group name="xingbie">
+            <label style="margin-right: .2rem;">
+              <radio value="1" checked="true"/>男
+            </label>
+            <label style="margin-left: .2rem;">
+              <radio value="2" />女
+            </label>
+          </radio-group>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">3.科室</view>
+        <view class="form-row-content">
+          <input type="text" class="input" name="keshi" />
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">4.工龄</view>
+        <view class="form-row-content">
+          <input type="number" class="input w30" name="nian" />年
+          <input type="number" class="input w30" name="yue" />月
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">5.发生日期</view>
+        <view class="form-row-content">
+          <input type="text" name="fashengrq" onFocus="dateFocus" value="{{ fsrq }}"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">6.工作类型</view>
+        <view class="form-row-content">
+          <picker onChange="bindPickerChange" name="gongzuolxid" data-id="gz" value="{{ gzind }}" range="{{ gongzuolx }}">
+            <view >
+              <input type="text" class="input" name="gonzuolx" value="{{ gongzuolx[gzind] }}" disabled="true"/>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">其他工作</view>
+        <view class="form-row-content">
+          <input class="{{ gzind == 16?'': 'bg-gray' }} input" name="qitagz" disabled="{{ gzind == 16?false:true }}"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">7.暴露发生地</view>
+        <view class="form-row-content">
+          <picker onChange="bindPickerChange" name="baoludid" data-id="bl" value="{{ blind }}" range="{{ baoludd }}">
+            <view>
+              <input type="text" name="baolufsd" value="{{ baoludd[blind] }}" disabled="true"/>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">其他地点</view>
+        <view class="form-row-content">
+          <input class="{{ blind == 19?'': 'bg-gray' }} input" name="qitabld" disabled="{{ blind == 19?false:true }}"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">8.是否知道病人来源</view>
+        <view class="form-row-content">
+          <picker onChange="bindPickerChange" name="bingrenlyid" data-id="ly" value="{{ brlyind }}" range="{{ bingrenly }}">
+            <view>
+              <input type="text" name="bingrenlyqk" value="{{ bingrenly[brlyind] }}" disabled="true"/>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">9.涉及哪一类体液</view>
+        <view class="form-row-content">
+          <picker onChange="bindPickerChange" name="tiyeid" data-id="ty" value="{{ tyind }}" range="{{ tiye }}">
+            <view>
+              <input type="text" name="tiyelx" value="{{ tiye[tyind] }}" disabled="true"/>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">其他体液</view>
+        <view class="form-row-content">
+          <input class="{{ tyind == 10?'': 'bg-gray' }} input" name="qitaty" disabled="{{ tyind == 10?false:true }}"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">10.体液是否受血液污染</view>
+        <view class="form-row-content">
+          <radio-group name="tiyewr">
+            <label style="margin-left: .2rem;">
+              <radio value="1" />是
+            </label>
+            <label style="margin-left: .2rem;">
+              <radio value="2" />否
+            </label>
+            <label style="margin-left: .2rem;">
+              <radio value="3" />未知
+            </label>
+          </radio-group>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">11.暴露部位</view>
+        <view class="form-row-content">
+          <picker onChange="bindPickerChange" name="baolubwid" data-id="blbw" value="{{ blbwind }}" range="{{ baolubw }}">
+            <view>
+              <input type="text" name="baolubw" value="{{ baolubw[blbwind] }}" disabled="true"/>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">其他部位</view>
+        <view class="form-row-content">
+          <input class="{{ blbwind == 6?'': 'bg-gray' }} input" name="qitablbw" disabled="{{ blbwind == 6?false:true }}"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">12.血液/体液(暴露程度)</view>
+        <view class="form-row-content">
+          <picker onChange="bindPickerChange" name="xuetiblid" data-id="xtbl" value="{{ xtblind }}" range="{{ xuetibl }}">
+            <view>
+              <input type="text" name="xuetiblcd" value="{{ xuetibl[xtblind] }}" disabled="true"/>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">13.病人姓名</view>
+        <view class="form-row-content">
+          <input type="text" class="input" name="bingrenxm"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">14.病人年龄</view>
+        <view class="form-row-content">
+          <input type="number" class="input" name="bingrennl"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">15.病人联系电话</view>
+        <view class="form-row-content">
+          <input type="text" class="input" name="bingrenlxdh"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">16.病人所在科室</view>
+        <view class="form-row-content">
+          <input type="text" class="input" name="bingrenks"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">17.病人床位号</view>
+        <view class="form-row-content">
+          <input type="text" class="input" name="bingrencwh"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row" style="height: 5.8rem;">
+        <view class="form-row-label label">18.事件发生时是否穿戴保护用具</view>
+        <view class="form-row-content">
+          <checkbox-group onChange="onChange" name="fanhuyj">
+            <label class="checkbox">
+              <checkbox class="v-check" value="1" />
+              <text class="checkbox-text">单层乳胶手套</text>
+            </label>
+            <label class="checkbox">
+              <checkbox class="v-check" value="2" />
+              <text class="checkbox-text">双层乳胶手套</text>
+            </label>
+            <label class="checkbox">
+              <checkbox class="v-check" value="3" />
+              <text class="checkbox-text">防护镜眼眼睛(无保护功能)</text>
+            </label>
+            <label class="checkbox">
+              <checkbox class="v-check" value="4" />
+              <text class="checkbox-text">面罩</text>
+            </label>
+            <label class="checkbox">
+              <checkbox class="v-check" value="5" />
+              <text class="checkbox-text">外科口罩</text>
+            </label>
+            <label class="checkbox">
+              <checkbox class="v-check" value="6" />
+              <text class="checkbox-text">外科手术衣</text>
+            </label>
+            <label class="checkbox">
+              <checkbox class="v-check" value="7" />
+              <text class="checkbox-text">塑料围裙</text>
+            </label>
+            <label class="checkbox">
+              <checkbox class="v-check" value="8" />
+              <text class="checkbox-text">实验室工作服(非防护服)</text>
+            </label>
+            <label class="checkbox">
+              <checkbox class="v-check" value="9" />
+              <text class="checkbox-text">其他工作服</text>
+            </label>
+          </checkbox-group>
+          <view>
+            <input type="text" class="input" name="qitabwyj"/>
+          </view>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row row">
+        <view class="form-row-label label">19.暴露源有无乙肝,丙肝,梅毒,艾滋病及其他传染病</view>
+        <view class="form-row-content">
+          <checkbox-group onChange="onChange" name="chuanranb">
+            <label class="checkbox">
+              <checkbox class="v-check" value="1" />
+              <text class="checkbox-text">艾滋病</text>
+            </label>
+            <label class="checkbox">
+              <checkbox class="v-check" value="2" />
+              <text class="checkbox-text">乙肝</text>
+            </label>
+            <label class="checkbox">
+              <checkbox class="v-check" value="3" />
+              <text class="checkbox-text">丙肝</text>
+            </label>
+            <label class="checkbox">
+              <checkbox class="v-check" value="4" />
+              <text class="checkbox-text">梅毒</text>
+            </label>
+            <label class="checkbox">
+              <checkbox class="v-check" value="5" />
+              <text class="checkbox-text">其他传染病</text>
+            </label>
+          </checkbox-group>
+          <view>
+            <input type="text" class="input" name="qitacrb" class=""/>
+          </view>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row row">
+        <view class="form-row-label label">20.造成暴露接触的原因</view>
+        <view class="form-row-content">
+          <textarea name="baoluyy" class="v-text"></textarea>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label label">21.血液、体液接触皮肤黏膜多长时间</view>
+        <view class="form-row-content">
+          <input type="text" name="jiechusj" class="input"/>
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row row">
+        <view class="form-row-label label">22.大约有多少血液/体液接触皮肤黏膜</view>
+        <view class="form-row-content">
+          <textarea name="jiechumj" class="v-text"></textarea>
+        </view>
+      </view>
+    </scroll-view>
+
+    <view class="page-section-btns">
+      <view><button class="btn-st" size="default" type="primary" form-type="submit">提交</button></view>
+      <view><button class="btn-st" size="default" type="ghost" form-type="reset">重置</button></view>
+    </view>
+  </form>
+</view>

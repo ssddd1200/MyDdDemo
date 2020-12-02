@@ -1,0 +1,6 @@
+{
+  "defaultTitle": "产科考试",
+  "usingComponents": {
+    "exam": "../../../components/exams/index"
+  }
+}

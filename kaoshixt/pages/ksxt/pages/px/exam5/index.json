@@ -1,0 +1,6 @@
+{
+  "defaultTitle": "试题5（偏瘫康复、高血压）N0N1考试",
+  "usingComponents": {
+    "exam": "../../../components/exams/index"
+  }
+}

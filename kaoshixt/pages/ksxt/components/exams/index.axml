@@ -1,0 +1,28 @@
+<view style="height: {{ height }}px;">
+  <view class="main">
+    <view class="v_que">
+      <label class="q_title">{{ questions[nowIndex].title }}</label>
+    </view>
+    <view class="v_ans" hidden="{{ questions[nowIndex].inputValue.length == 0 }}">
+      <label a:for="{{ questions[nowIndex].inputValue }}">
+        <input type="text" class="input" value="{{ item }}" placeholder="第{{ (index + 1) }}问" data-id="{{ index }}" onBlur="inputValue"/>
+      </label>
+    </view>
+    <view class="v_ans" hidden="{{ questions[nowIndex].chose.length == 0 }}">
+      <radio-group onChange="radioChange">
+        <label class="radio" a:for="{{ questions[nowIndex].chose }}">
+          <radio value="{{item.value}}" checked="{{item.checked}}"/>
+          <text class="radio-text">{{item.label}}</text>
+        </label>
+      </radio-group>
+    </view>
+    <view class="v_ans" hidden="{{ questions[nowIndex].text == undefined }}">
+      <textarea class="text" placeholder="请输入答案" value="{{ questions[nowIndex].text }}" onBlur="inputText"></textarea>
+    </view>
+  </view>
+  <view class="btns">
+    <button size="default" type="primary" onTap="pervSub" disabled="{{ nowIndex == 0}}">上一题</button>
+    <button size="default" type="primary" onTap="nextSub">{{ nowIndex == questions.length - 1?"提交":"下一题"}}</button>
+  </view>
+</view>
+

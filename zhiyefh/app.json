@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/zyfh/index",
+    "pages/zyfh/ruiqisfh/index",
+    "pages/zyfh/xueyety/index"
+  ],
+  "window": {
+    "defaultTitle": "政务模拟",
+    "backgroundColor": "#F5F5F9",
+    "pullRefresh": false,
+    "allowsBounceVertical": "NO"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "defaultTitle": "制度考试",
+  "usingComponents": {
+    "exams": "../../components/exams/index"
+  }
+}

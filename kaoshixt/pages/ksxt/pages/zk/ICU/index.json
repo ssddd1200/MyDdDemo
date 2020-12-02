@@ -1,0 +1,6 @@
+{
+  "defaultTitle": "应急小组考试",
+  "usingComponents": {
+    "exam": "../../../components/exams/index"
+  }
+}

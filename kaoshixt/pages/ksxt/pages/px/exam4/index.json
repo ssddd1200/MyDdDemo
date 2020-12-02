@@ -1,0 +1,6 @@
+{
+  "defaultTitle": "试题4(血糖、猝死)",
+  "usingComponents": {
+    "exam": "../../../components/exams/index"
+  }
+}

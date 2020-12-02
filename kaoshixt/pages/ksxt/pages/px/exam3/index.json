@@ -1,0 +1,6 @@
+{
+  "defaultTitle": "试题3（休克）",
+  "usingComponents": {
+    "exam": "../../../components/exams/index"
+  }
+}

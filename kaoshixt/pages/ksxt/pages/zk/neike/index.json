@@ -1,0 +1,6 @@
+{
+  "defaultTitle": "内科考试",
+  "usingComponents": {
+    "exam": "../../../components/exams/index"
+  }
+}

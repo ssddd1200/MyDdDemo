@@ -1,0 +1,23 @@
+{
+  "pages": [
+    "pages/ksxt/index",
+    "pages/ksxt/pages/zk/ICU/index",
+    "pages/ksxt/pages/zk/chanke/index",
+    "pages/ksxt/pages/zk/erke/index",
+    "pages/ksxt/pages/zk/neike/index",
+    "pages/ksxt/pages/zd/index",
+    "pages/ksxt/pages/sj/N0/index",
+    "pages/ksxt/pages/sj/N1/index",
+    "pages/ksxt/pages/sj/N2/index",
+    "pages/ksxt/pages/sj/N3/index",
+    "pages/ksxt/pages/px/exam3/index",
+    "pages/ksxt/pages/px/exam4/index",
+    "pages/ksxt/pages/px/exam5/index"
+  ],
+  "window": {
+    "defaultTitle": "考试系统",
+    "backgroundColor": "#F5F5F9",
+    "pullRefresh": false,
+    "allowsBounceVertical": "NO"
+  }
+}
