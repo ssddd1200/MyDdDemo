@@ -1,0 +1,18 @@
+<view style="height: {{ height }}px;">
+  <view class="v_ques">
+    <label>{{ questions[newIndex].title }}</label>
+    <view class="v_ans" hidden="{{ questions[newIndex].chose.length == 0 }}">
+      <radio-group onChange="radioChange">
+        <label class="radio" a:for="{{ questions[newIndex].chose }}">
+          <radio value="{{item.value}}" checked="{{item.checked}}"/>
+          <text class="radio-text">{{item.label}}</text>
+        </label>
+      </radio-group>
+    </view>
+    <view class="v_ans" hidden="{{ questions[newIndex].chose.length != 0 }}">
+      <input class="input" type="number" value="{{ questions[newIndex].inputVal }}" onInput="inputValue"/>
+    </view>
+  </view>
+  <button size="default" type="primary" onTap="pervSub" disabled="{{ newIndex == 0}}">上一题</button>
+  <button size="default" type="primary" onTap="nextSub">{{ newIndex == questions.length-1?"提交":"下一题"}}</button>
+</view>

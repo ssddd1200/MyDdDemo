@@ -1,0 +1,23 @@
+/* 100rpx = 1rem */
+.v_ques{
+  height: calc(100% - 220rpx);
+}
+.v_ques>label{
+  font-weight: bolder;
+}
+.v_ans{
+  line-height: 100rpx;
+}
+
+.radio {
+  display: block;
+  margin-left: 20rpx;
+  margin-bottom: 20rpx;
+}
+.radio-text {
+  line-height: 1.8;
+}
+.input {
+  margin-left: 20rpx;
+  width: 90%;
+}
